@@ -4,7 +4,7 @@ using namespace std;
 class Developer{
 protected:
     string ID , name , role , status , WFH;
-    int child;
+    int child=0;
 
     double totalGaji , gajiPokok , totalTunjangan=0;
 
@@ -33,7 +33,8 @@ public:
         string id , n , s , w;
         int c;
 
-        cout<<"Masukan data"<<endl;
+        cout<<"\n======================Masukan Data======================\n";
+        cout<<"Role\t\t: "<<role<<endl<<endl;
         cout<<"ID\t\t: ";
         cin>>id;
         setID(id);
@@ -47,9 +48,11 @@ public:
         cin>>s;
         setStatus(s);
 
-        cout<<"Jumlah anak\t\t: ";
-        cin>>c;
-        setChild(c);
+        if(s=="iya"){
+            cout<<"Jumlah anak\t: ";
+            cin>>c;
+            setChild(c);
+        }
 
         cout<<"Bekerja dari rumah (iya/tidak)\t: ";
         cin>>w;
@@ -65,15 +68,14 @@ public:
             <<"Anak\t\t: "<<child<<endl
             <<"Work from home\t: "<<WFH<<endl;
         cout.precision(1);
-        cout<<"Total Gaji\t: Rp"<<fixed<<totalGaji;
+        cout<<"Total Gaji\t: Rp"<<fixed<<totalGaji<<endl<<endl;
+        system("pause");
+        system("cls");
     }
 };
 
 class JuniorDev : public Developer{
-public:
-    JuniorDev(){
-        role = "Junior Developer";
-    }
+private:
     void setGajiPokok(){
         gajiPokok = 10000000;
     }
@@ -84,13 +86,20 @@ public:
 
         if(WFH=="tidak") totalTunjangan += gajiPokok * 0.25;
     }
+public:
+    JuniorDev(){
+        role = "Junior Developer";
+    }
+    void main(){
+        setData();
+        setGajiPokok();
+        setTunjangan();
+        printData();
+    }
 };
 
 class MiddleDev : public Developer{
-public:
-    MiddleDev(){
-        role = "Middle Developer";
-    }
+private:
     void setGajiPokok(){
         gajiPokok = 20000000;
     }
@@ -101,13 +110,20 @@ public:
 
         if(WFH=="tidak") totalTunjangan += gajiPokok * 0.30;
     }
+public:
+    MiddleDev(){
+        role = "Middle Developer";
+    }
+    void main(){
+        setData();
+        setGajiPokok();
+        setTunjangan();
+        printData();
+    }
 };
 
 class SeniorDev : public Developer{
-public:
-    SeniorDev(){
-        role = "Senior Developer";
-    }
+private:
     void setGajiPokok(){
         gajiPokok = 30000000;
     }
@@ -117,6 +133,16 @@ public:
         if(child > 0) totalTunjangan += (child * 0.05) * gajiPokok;
 
         if(WFH=="tidak") totalTunjangan += gajiPokok * 0.30;
+    }
+public:
+    SeniorDev(){
+        role = "Senior Developer";
+    }
+    void main(){
+        setData();
+        setGajiPokok();
+        setTunjangan();
+        printData();
     }
 };
 
@@ -128,10 +154,14 @@ int main() {
      SeniorDev sd2;
      SeniorDev sd3;
 
-    jd1.setData();
-    jd1.setGajiPokok();
-    jd1.setTunjangan();
-    jd1.printData();
+    jd1.main();
+
+    md1.main();
+    md2.main();
+
+    sd1.main();
+    sd2.main();
+    sd3.main();
 
 
     return 0;
