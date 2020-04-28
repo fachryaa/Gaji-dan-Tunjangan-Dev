@@ -71,7 +71,7 @@ public:
 
 class JuniorDev : public Developer{
 public:
-    void setRole(){
+    JuniorDev(){
         role = "Junior Developer";
     }
     void setGajiPokok(){
@@ -88,7 +88,7 @@ public:
 
 class MiddleDev : public Developer{
 public:
-    void setRole(){
+    MiddleDev(){
         role = "Middle Developer";
     }
     void setGajiPokok(){
@@ -105,7 +105,7 @@ public:
 
 class SeniorDev : public Developer{
 public:
-    void setRole(){
+    SeniorDev(){
         role = "Senior Developer";
     }
     void setGajiPokok(){
@@ -128,15 +128,7 @@ int main() {
      SeniorDev sd2;
      SeniorDev sd3;
 
-    Developer *juniorDev1 = &jd1;
-    Developer *middleDev1 = &md1;
-    Developer *middleDev2 = &md2;
-    Developer *seniorDev1 = &sd1;
-    Developer *seniorDev2 = &sd2;
-    Developer *seniorDev3 = &sd3;
-
-    juniorDev1->setData();
-    jd1.setRole();
+    jd1.setData();
     jd1.setGajiPokok();
     jd1.setTunjangan();
     jd1.printData();
